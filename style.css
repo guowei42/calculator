@@ -1,0 +1,101 @@
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.display {
+    height: 15%;
+    position: relative;
+
+    margin: 5px 20px;
+    border-radius: 10px;
+}
+
+.content {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+
+    font-size: 40px;
+    font-family: 'Press Start 2P', arial;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    
+    flex: 1;
+
+    height: 50%;
+    max-width: 400px;
+
+}
+
+.clear-del{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:20px;
+    height: 50px;
+
+    margin: 0px 20px 10px 20px;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+}
+
+.numbers {
+    display: grid;
+    flex: 1;
+    grid-template-columns: auto auto auto;
+    
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.math {
+    display: grid;
+    flex: 1 1 0;
+    grid-template-columns: auto;
+
+
+    border-radius: 12px;
+    max-width: 70px;
+    margin: 20px;
+}
+
+.math button, .numbers button{
+    border-radius: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#seven{
+    border-radius: 10px 0 0 0;
+}
+
+#nine {
+    border-radius: 0 10px 0 0;
+}
+
+#zero {
+    border-radius: 0 0 0 10px;
+}
+
+#eq {
+    border-radius: 0px 0px 10px 0px;
+}
+
+#divide {
+    border-radius: 10px 10px 0 0;
+}
+
+#plus {
+    border-radius: 0 0 10px 10px;
+}
