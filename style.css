@@ -1,37 +1,41 @@
+* {
+    border: 1px solid red
+}
+html {
+    height: 100%;
+}
 
 body {
-    height: 100vh;
+    height: 100%;
     display: flex;
+    margin: 0;
     align-items: center;
     justify-content: center;
 }
 
 .display {
-    height: 15%;
+    min-height: 70px;
     position: relative;
-
     margin: 5px 20px;
     border-radius: 10px;
 }
 
-.content {
+#content {
     position: absolute;
     bottom: 5px;
     right: 10px;
-
     font-size: 40px;
     font-family: 'Press Start 2P', arial;
+    max-width: 93%;
+    height: 80%;
+    text-align: right;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
-    
     flex: 1;
-
-    height: 50%;
     max-width: 400px;
-
 }
 
 .clear-del{
@@ -46,6 +50,7 @@ body {
 .main {
     display: flex;
     flex: 1;
+    min-height: 300px;
 }
 
 .numbers {
