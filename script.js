@@ -1,7 +1,12 @@
-{
-    num1 = 0;
-    num2 = 0;
+{   
+    FLOATDECDEFAULT = -1;
+    NUM1DEFAULT = 0;
+    NUM2DEFAULT = 0;
+    num1 = NUM1DEFAULT;
+    num2 = NUM2DEFAULT;
     op1 = (first, second) => Number(first) + Number(second);
+    floatBool = false;
+    floatDec = FLOATDECDEFAULT;
 }
 
 function getInput() {
@@ -21,13 +26,17 @@ function resetInput() {
     inputBox.setAttribute("value", "");
     resultBox.setAttribute("value", "0");
     op1 = (first, second) => Number(first) + Number(second);
-    num1 = 0;
-    num2 = 0;
+    floatBool = false;
+    floatDec = FLOATDECDEFAULT;
+    num1 = NUM1DEFAULT;
+    num2 = NUM2DEFAULT;
 }
 
 function clearInput() {
     const inputBox = document.getElementById("content");
     inputBox.setAttribute("value", "");
+    floatBool = false;
+    floatDec = FLOATDECDEFAULT;
 }
 
 function remove() {
@@ -102,19 +111,38 @@ function equals() {
 
 function resultBox() {
     const resultBox = document.getElementById("result");
-    const result = op1(num1, num2);
+    let result = op1(num1, num2);
+    if (floatBool) {
+        result = result.toFixed(14);
+    }
     resultBox.setAttribute("value", result);
-}
-
-function decimal() {
+    resizeFont();
 }
 
 function addToVariable(input) {
-    const currentNum = getInput();
+    let currentNum = getInput();
     if (currentNum.toString().length >= 15) {
         return;
     } 
-    setInput(currentNum * 10 + input);
-    num2 = getInput();
+    if (floatBool) {
+        currentNum = parseFloat(getInput());
+    }
+    if (input == ".") {
+        if (!floatBool) {
+            floatBool = true;
+            setInput(String(currentNum) + ".");
+            num2 = parseFloat(getInput() + ".0");
+        }
+    } else {
+        if (floatBool) {
+            setInput(String(currentNum + input * Math.pow(10, floatDec)));
+            console.log(currentNum + input * Math.pow(10, floatDec));
+            floatDec--;
+            num2 = parseFloat(getInput());
+        } else {
+            setInput(currentNum * 10 + input);
+            num2 = parseInt(getInput());
+        }
+    } 
     resizeFont();
 }
