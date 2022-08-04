@@ -17,7 +17,9 @@ function setInput(input) {
 
 function resetInput() {
     const inputBox = document.getElementById("content");
+    const resultBox = document.getElementById("result");
     inputBox.setAttribute("value", "");
+    resultBox.setAttribute("value", "0");
     op1 = (first, second) => Number(first) + Number(second);
     num1 = 0;
     num2 = 0;
@@ -29,7 +31,12 @@ function clearInput() {
 }
 
 function remove() {
-
+    const resultBox = document.getElementById("result");
+    const screen = getInput();
+    const newScreen = screen.slice(0,-1);
+    setInput(newScreen);
+    resultBox.setAttribute("value", newScreen);
+    num2 = Number(newScreen);
 }
 
 function resizeFont() {
@@ -52,7 +59,7 @@ function resizeFont() {
 }
 
 function divide() {
-    setInput(op1(num1, num2));
+    resultBox();
     num1 = op1(num1, num2);
     op1 = (first, second) => {
         if ((first/second).toString().length >= 15) {
@@ -64,21 +71,21 @@ function divide() {
 }
 
 function multiply() {
-    setInput(op1(num1, num2));
+    resultBox();
     num1 = op1(num1, num2);
     op1 = (first, second) => first * second;
     clearInput();
 }
 
 function minus() {
-    setInput(op1(num1, num2));
+    resultBox();
     num1 = op1(num1, num2);
     op1 = (first, second) => first - second;
     clearInput();
 }
 
 function add() {
-    setInput(op1(num1, num2));
+    resultBox();
     num1 = op1(num1, num2);
     op1 = (first, second) => Number(first) + Number(second);
     clearInput();
@@ -87,9 +94,16 @@ function add() {
 function equals() {
     const newNum = op1(num1, num2)
     setInput(newNum);
+    resultBox();
     num1 = 0;
     num2 = newNum
     op1 = (first, second) => Number(first) + Number(second);
+}
+
+function resultBox() {
+    const resultBox = document.getElementById("result");
+    const result = op1(num1, num2);
+    resultBox.setAttribute("value", result);
 }
 
 function decimal() {
