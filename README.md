@@ -12,3 +12,6 @@ This is a basic calculator. Purpose is to practise HTML, CSS and JS.
 - Box shadow for the dial buttons and math functions needs polishing
 - More testing with logic
 - Work with keyboard inputs
+- Divide by 0 error
+- Edge cases
+  - Pressing "=" before a valid expression
